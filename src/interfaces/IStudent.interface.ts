@@ -12,3 +12,5 @@ interface Student {
 
     score: number;
 };
+
+export {Student}
