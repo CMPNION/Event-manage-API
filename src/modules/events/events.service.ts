@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { EventModel } from './models/event.model';
 import { IEvent } from 'src/interfaces/Event.interface';
 import { CacheService } from '../cache/cache.service';
-import { IMessage } from 'src/interfaces/ErrorResponse.interface';
+import { IMessage } from 'src/interfaces/MessageResponse.interface';
 
 @Injectable()
 export class EventsService {
