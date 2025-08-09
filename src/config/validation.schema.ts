@@ -10,6 +10,7 @@ const validationSchema: Joi.ObjectSchema = Joi.object({
   POSTGRES_DB: Joi.string().required(),
   REDIS_HOST: Joi.string().required(),
   REDIS_PORT: Joi.number().default(6379),
+  REDIS_URL: Joi.string().default(`REDIS_URL=redis://localhost:6379`),
 });
 
 export default validationSchema;
