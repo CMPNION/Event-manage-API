@@ -1,37 +1,41 @@
-import { allow } from 'joi';
 import {
   Column,
   DataType,
   Default,
   Model,
   PrimaryKey,
+  Table,
 } from 'sequelize-typescript';
 import { IEvent } from 'src/interfaces/Event.interface';
 import { uid } from 'uid';
 
+@Table({
+  tableName: 'events',
+  timestamps: false, // если не нужны createdAt/updatedAt
+})
 export class EventModel extends Model<IEvent> {
-  @Column({ type: DataType.UUID, unique: true })
   @PrimaryKey
-  @Default(uid())
+  @Default(() => uid())
+  @Column({ type: DataType.STRING, unique: true })
   declare uid: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  declare eventName: string
+  declare eventName: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  declare eventDescription: string | null
+  declare eventDescription: string | null;
 
   @Column({
     type: DataType.NUMBER,
-    allowNull: false
+    allowNull: false,
   })
-  eventCategory: number
+  eventCategory: number;
 
   @Column({
     type: DataType.DATE,
@@ -41,16 +45,14 @@ export class EventModel extends Model<IEvent> {
 
   @Column({
     type: DataType.STRING,
-    allowNull: false
+    allowNull: false,
   })
-  declare bannerURL: string 
+  declare bannerURL: string;
 
+  @Default(false)
   @Column({
     type: DataType.BOOLEAN,
     allowNull: false,
   })
-  @Default(false)
-  declare allowed: boolean
-
+  declare allowed: boolean;
 }
-

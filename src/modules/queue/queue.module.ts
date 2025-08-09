@@ -5,13 +5,13 @@ import { Module } from '@nestjs/common';
   imports: [
     BullModule.forRoot({
       connection: {
-        host: process.env.BULL_HOST || 'localhost',
-        port: Number(process.env.BULL_PORT) || 6397,
+        host: process.env.REDIS_HOST || 'localhost',
+        port: Number(process.env.REDIS_PORT) || 6379,
       },
     }),
     BullModule.registerQueue({
-        name: 'EventNotification'
-    })
+      name: 'EventNotification',
+    }),
   ],
 })
 export class QueueModule {}

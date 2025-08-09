@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { EventModel } from '../events/models/event.model';
 
 @Module({
   imports: [

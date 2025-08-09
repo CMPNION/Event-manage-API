@@ -15,4 +15,4 @@ import { createKeyv } from '@keyv/redis';
   providers: [CacheService],
   exports: [CacheService],
 })
-export class CacheModule {}
+export class AppCacheModule {}

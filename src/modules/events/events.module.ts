@@ -1,11 +1,14 @@
 import { Module } from '@nestjs/common';
 import { EventsService } from './events.service';
 import { EventsController } from './events.controller';
-import { CacheModule } from '@nestjs/cache-manager';
+import { AppCacheModule } from '../cache/cache.module';
+import { CacheService } from '../cache/cache.service';
+import { SequelizeModule } from '@nestjs/sequelize';
+import { EventModel } from './models/event.model';
 
 @Module({
-  imports: [CacheModule],
+  imports: [AppCacheModule, SequelizeModule.forFeature([EventModel])],
   controllers: [EventsController],
-  providers: [EventsService],
+  providers: [EventsService, CacheService],
 })
 export class EventsModule {}
